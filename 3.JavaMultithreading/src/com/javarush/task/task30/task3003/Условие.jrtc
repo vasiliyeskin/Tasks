@@ -1,0 +1,22 @@
+<div class="wdghtml" taskKey="com.javarush.task.task30.task3003">
+<h3>Экономим время</h3>
+<p>1. Создай <strong><span class="text-corporate">Producer</span></strong> и <span class="text-corporate"><strong>Consumer</strong></span> (<em>См. комментарий к методу</em> <mark>main</mark>).<br />
+2. Создай методы <mark>toString</mark>, <mark>equals</mark> и <mark>hashCode</mark> в классе <span class="text-corporate"><strong>ShareItem</strong></span>. Для этого в <strong>IntelliJ IDEA</strong> в теле класса <span class="text-corporate"><strong>ShareItem</strong></span> выполни:<br />
+2.1. <span class="text-neon">Alt+Enter -&gt; toString() -&gt; Ente</span>r.<br />
+2.2. <span class="text-neon">Alt+Enter -&gt; equals() and hashCode() -&gt; click all &#8216;Next&#8217;-s</span>.<br />
+2.3. Реализацию методов <mark>toString()</mark>, <mark>equals()</mark> и <mark>hashCode()</mark> оставь такими, какими их сгенерировала <strong>IntelliJ IDEA</strong>.<br />
+3. В <span class="text-corporate"><strong>Producer</strong></span> и <span class="text-corporate"><strong>Consumer</strong></span> реализуй метод <mark>run</mark> так, чтобы вызов метода <mark>interrupt</mark> прерывал работу <span class="text-corporate"><strong>consumer</strong></span> и <span class="text-corporate"><strong>producer</strong></span> трэдов.</p>
+<p>4. Реализация метода <mark>run</mark> для <span class="text-corporate"><strong>Producer</strong></span>:<br />
+4.1. Используя метод <mark>offer</mark> добавь в очередь <strong>9</strong> <span class="text-corporate"><strong>ShareItem</strong></span>-ов с такими параметрами: (<strong>&#171;<em>ShareItem-N</em>&#171;, <em>N</em></strong>), где <mark class="user">N</mark> &#8212; номер элемента от <span class="text-user"><strong>1</strong></span> до <span class="text-user"><strong>9</strong></span>.<br />
+4.2. Перед каждым добавлением выведи фразу &#171;<strong>Элемент &#8216;<em>ShareItem-N</em>&#8216; добавлен</strong>&#171;. Используй <mark>System.out.format</mark>.<br />
+4.3. Усыпи трэд на <span class="text-user"><strong>0.1</strong></span> секунды.<br />
+4.4. Если у очереди есть Consumer, не занятый работой, то выведи фразу &#171;<em><strong>Consumer в ожидании!</strong></em>&#171;.<br />
+Просмотри методы интерфейса <span class="text-yellow"><strong>TransferQueue</strong></span>, там есть нужный метод.</p>
+<p>5. Реализация метода <mark>run</mark> для <span class="text-corporate"><strong>Consumer</strong></span>:<br />
+5.1. Усыпи трэд на <span class="text-user"><strong>0.45</strong></span> секунды.<br />
+5.2. В бесконечном цикле забери элемент из очереди методом <mark>take</mark> и выведи в консоль &#171;<em><strong>Processing item.toString()</strong></em>&#171;.</p>
+<p>6. Сверь вывод с файлом <strong>output.txt</strong>.<br />
+7. Стек-трейс не выводи в консоль.<br />
+8. Для вывода любой информации на экран используй <mark>System.out.format</mark>.</p>
+
+</div>
