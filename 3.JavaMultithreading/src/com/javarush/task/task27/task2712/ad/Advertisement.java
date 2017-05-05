@@ -31,13 +31,9 @@ public class Advertisement {
         return amountPerOneDisplaying;
     }
 
-    public void revalidate() {
-        if (hits <= 0) throw new UnsupportedOperationException();
-
+    public void revalidate(){
+        if(hits<=0)throw new UnsupportedOperationException();
         hits--;
-        if (hits == 1) {
-            amountPerOneDisplaying += initialAmount % amountPerOneDisplaying;
-        }
     }
 
     public int getHits() {

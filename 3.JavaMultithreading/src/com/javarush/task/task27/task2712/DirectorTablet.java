@@ -1,5 +1,6 @@
 package com.javarush.task.task27.task2712;
 
+import com.javarush.task.task27.task2712.ad.StatisticAdvertisementManager;
 import com.javarush.task.task27.task2712.statistic.StatisticManager;
 
 import java.text.SimpleDateFormat;
@@ -35,9 +36,18 @@ public class DirectorTablet {
     }
 
     public void printActiveVideoSet() {
+        if (StatisticAdvertisementManager.getInstance().getAllAdvertisement().isEmpty()) return;
+        for (Map.Entry<String, Integer> dt : StatisticAdvertisementManager.getInstance().getAllAdvertisement().entrySet()){
+            if (dt.getValue() > 0) ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, "%s - %d", dt.getKey(), dt.getValue()));
+        }
+        //ConsoleHelper.writeMessage("");
     }
-
     public void printArchivedVideoSet() {
+        if (StatisticAdvertisementManager.getInstance().getAllAdvertisement().isEmpty()) return;
+        for (Map.Entry<String, Integer> dt : StatisticAdvertisementManager.getInstance().getAllAdvertisement().entrySet()){
+            if (dt.getValue() <= 0) ConsoleHelper.writeMessage(String.format(Locale.ENGLISH, dt.getKey()));
+        }
+        //ConsoleHelper.writeMessage("");
     }
 
     private List<String> outPutList = new ArrayList<>();
