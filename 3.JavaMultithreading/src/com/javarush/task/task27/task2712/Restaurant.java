@@ -2,42 +2,44 @@ package com.javarush.task.task27.task2712;
 
 
 import com.javarush.task.task27.task2712.kitchen.Cook;
+import com.javarush.task.task27.task2712.kitchen.Order;
 import com.javarush.task.task27.task2712.kitchen.Waiter;
 import com.javarush.task.task27.task2712.statistic.StatisticManager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Restaurant
 {
     private static final int ORDER_CREATING_INTERVAL = 100;
+    private static final LinkedBlockingQueue<Order> orderQueue = new LinkedBlockingQueue<>();
 
     public static void main(String[] args)
     {
         Locale.setDefault(Locale.ENGLISH);
         List<Tablet> tablets = new ArrayList<>();
         Cook cook1 = new Cook("Amigo");
+        cook1.setQueue(orderQueue);
         Cook cook2 = new Cook("Bob");
+        cook2.setQueue(orderQueue);
 
-        StatisticManager statisticManager = StatisticManager.getInstance();
-        statisticManager.register(cook1);
-        statisticManager.register(cook2);
 
         Waiter waitor = new Waiter();
         cook1.addObserver(waitor);
         cook2.addObserver(waitor);
         for(int i = 0; i < 5; i++)
         {
-            tablets.add(new Tablet(i+1));
+            Tablet nTablet = new Tablet(i+1);
+            nTablet.setQueue(orderQueue);
+            tablets.add(nTablet);
         }
 
-        OrderManager orderManager = new OrderManager();
-
-        for (int i=0; i < tablets.size(); i++)
-        {
-            tablets.get(i).addObserver(orderManager);
-        }
+        Thread threadAmigo = new Thread(cook1);
+        Thread threadChief = new Thread(cook2);
+        threadAmigo.start();
+        threadChief.start();
 
 
 
