@@ -1,8 +1,6 @@
 package com.javarush.task.task33.task3310;
 
-import com.javarush.task.task33.task3310.strategy.HashMapStorageStrategy;
-import com.javarush.task.task33.task3310.strategy.OurHashMapStorageStrategy;
-import com.javarush.task.task33.task3310.strategy.StorageStrategy;
+import com.javarush.task.task33.task3310.strategy.*;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -14,10 +12,22 @@ import java.util.Set;
 public class Solution {
     public static void main(String[] args) {
         HashMapStorageStrategy strategy = new HashMapStorageStrategy();
-        testStrategy(strategy, 10000L);
+        testStrategy(strategy, 100L);
 
         OurHashMapStorageStrategy ourHashMapStorageStrategy = new OurHashMapStorageStrategy();
-        testStrategy(ourHashMapStorageStrategy, 10000L);
+        testStrategy(ourHashMapStorageStrategy, 100L);
+
+        FileStorageStrategy fileStorageStrategy = new FileStorageStrategy();
+        testStrategy(fileStorageStrategy, 100L);
+
+        OurHashBiMapStorageStrategy ourHashBiMapStorageStrategy = new OurHashBiMapStorageStrategy();
+        testStrategy(ourHashBiMapStorageStrategy, 100L);
+
+        HashBiMapStorageStrategy hbi = new HashBiMapStorageStrategy();
+        testStrategy(hbi, 100L);
+
+        DualHashBidiMapStorageStrategy dhb = new DualHashBidiMapStorageStrategy();
+        testStrategy(dhb, 100L);
     }
 
     public static Set<Long> getIds(Shortener shortener, Set<String> strings)
