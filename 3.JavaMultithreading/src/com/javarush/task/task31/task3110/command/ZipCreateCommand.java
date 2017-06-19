@@ -1,0 +1,11 @@
+package com.javarush.task.task31.task3110.command;
+
+/**
+ * Created by Vaisiliy Es'kin on 06/19/17.
+ */
+public class ZipCreateCommand extends ZipCommand {
+    @Override
+    public void execute() throws Exception {
+
+    }
+}
